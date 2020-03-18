@@ -20,7 +20,7 @@ $lots = array(array("name" => "2014 Rossignol District Snowboard", "category" =>
 function format_number($number){
     $number = ceil($number);
     if($number < 1000){
-        return $number;
+        return $number . "<b class='rub'>р</b>";
     }
     else{
         $number = number_format($number, 0, ' ', ' ');
