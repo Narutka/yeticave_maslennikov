@@ -17,15 +17,10 @@ $lots = array(array("name" => "2014 Rossignol District Snowboard", "category" =>
               array("name" => "Куртка для сноуборда DC Mutiny Charocal", "category" => "Одежда", "cost" => 7500, "src" => "img/lot-5.jpg"),
               array("name" => "Маска Oakley Canopy", "category" => "Разное", "cost" => 5400, "src" => "img/lot-6.jpg"));
 
-function format_number($number){
+function format_number($number, $ruble){
     $number = ceil($number);
-    if($number < 1000){
-        return $number . "<b class='rub'>р</b>";
-    }
-    else{
-        $number = number_format($number, 0, ' ', ' ');
-        return $number . "<b class='rub'>р</b>";
-    }
+    $number = number_format($number, 0, ' ', ' ');      
+    return $ruble ? $number . "<b class='rub'>р</b>" : $number; 
 }             
 ?>
 <!DOCTYPE html>
@@ -104,8 +99,8 @@ function format_number($number){
                     <h3 class="lot__title"><a class="text-link" href="pages/lot.html"><?=$lot["name"]?></a></h3>
                     <div class="lot__state">
                         <div class="lot__rate">
-                            <span class="lot__amount">Стартовая цена</span>
-                            <span class="lot__cost"><?=format_number($lot["cost"])?></span>
+                            <span class="lot__amount">Стартовая цена: <?=format_number($lot["cost"],false)?></span>
+                            <span class="lot__cost"><?=format_number($lot["cost"],true)?></span>
                         </div>
                         <div class="lot__timer timer">
                             12:23
