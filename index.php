@@ -1,7 +1,7 @@
 <?php
 $is_auth = rand(0, 1);
 
-$user_name = ''; // укажите здесь ваше имя
+$user_name = 'Максим'; // укажите здесь ваше имя
 
 $categories = array("boards" => "Доски и лыжи",
                     "attachment" => "Крепления",
@@ -16,6 +16,17 @@ $lots = array(array("name" => "2014 Rossignol District Snowboard", "category" =>
               array("name" => "Ботинки для сноуборда DC Mutiny Charocal", "category" => "Ботинки", "cost" => 10999, "src" => "img/lot-4.jpg"),
               array("name" => "Куртка для сноуборда DC Mutiny Charocal", "category" => "Одежда", "cost" => 7500, "src" => "img/lot-5.jpg"),
               array("name" => "Маска Oakley Canopy", "category" => "Разное", "cost" => 5400, "src" => "img/lot-6.jpg"));
+
+function format_number($number){
+    $number = ceil($number);
+    if($number < 1000){
+        return $number;
+    }
+    else{
+        $number = number_format($number, 0, ' ', ' ');
+        return $number . "<b class='rub'>р</b>";
+    }
+}             
 ?>
 <!DOCTYPE html>
 <html lang="ru">
@@ -48,7 +59,7 @@ $lots = array(array("name" => "2014 Rossignol District Snowboard", "category" =>
                 <img src="img/user.jpg" width="40" height="40" alt="Пользователь">
             </div>
             <div class="user-menu__logged">
-                <p></p>
+                <p><?=$user_name?></p>
             </div>
         <?php else: ?>
             <ul class="user-menu__list">
@@ -93,8 +104,8 @@ $lots = array(array("name" => "2014 Rossignol District Snowboard", "category" =>
                     <h3 class="lot__title"><a class="text-link" href="pages/lot.html"><?=$lot["name"]?></a></h3>
                     <div class="lot__state">
                         <div class="lot__rate">
-                            <span class="lot__amount"><?=$lot["cost"]?></span>
-                            <span class="lot__cost"><?=$lot["cost"]?><b class="rub">р</b></span>
+                            <span class="lot__amount">Стартовая цена</span>
+                            <span class="lot__cost"><?=format_number($lot["cost"])?></span>
                         </div>
                         <div class="lot__timer timer">
                             12:23
