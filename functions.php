@@ -37,4 +37,13 @@ function format_number($number, $ruble){
     }     
     return $ruble ? $number . "<b class='rub'>р</b>" : $number; 
 }    
+
+function close_lots(){
+    $tomorrow  = mktime(0, 0, 0, date("m")  , date("d")+1, date("Y"));
+    $now = mktime(date("H"), date("i"), 0, date("m"), date("d"), date("Y"));   
+    $diff = $tomorrow - $now;  
+    $hours = floor($diff/3600); 
+    $min = $diff/60 - $hours*60;   
+    return sprintf("%02d:%02d", $hours, $min); 
+}
 ?>

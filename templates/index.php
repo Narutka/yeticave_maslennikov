@@ -30,7 +30,7 @@
                         <span class="lot__cost"><?=format_number($lot["cost"],true)?></span>
                     </div>
                     <div class="lot__timer timer">
-                        12:23
+                        <?=$close_lot?>
                     </div>
                 </div>
             </div>
